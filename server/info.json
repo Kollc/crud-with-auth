@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "email": "vov@mail.ru",
+      "password": "$2a$10$5phQBt1sYzQEQ0Qmg5roiO4eYlUBfzS8spWnKKRiZP7GOAIJ5KgqW",
+      "id": 4
+    },
+    {
+      "email": "test1@mail.ru",
+      "password": "$2a$10$.rGaAe6ORQ.CwvmKPYE1HuzCblvNdMM/e70GOWsCV6Or5LSa58lmi",
+      "id": 5
+    },
+    {
+      "email": "test1@mail.ru",
+      "password": "$2a$10$58pgBRBOczMOIzAI/am.ouIkB5sJ1nhEIY5WFkBzXmTRGVYmxWXSe",
+      "id": 6
+    },
+    {
+      "email": "mr.kollc@list.ru",
+      "password": "$2a$10$AbpG.MsVWPYvf1in9/uQh.fdgRPUtCTQJzaV0hHNygDUxpY1OzgiC",
+      "id": 7
+    },
+    {
+      "email": "mr.kollc1@list.ru",
+      "password": "$2a$10$hb08Wd6EZnwYXcZSlaTkLOcISjL5MVgIDlfydZ40FnlStse.HRjTm",
+      "id": 8
+    },
+    {
+      "email": "mr.kollc4@list.ru",
+      "password": "$2a$10$wszg8LQCHtzUrSBohgawMunVD6fs9CqoxeqhFcJOQKHQiVX4OlZNe",
+      "id": 9
+    },
+    {
+      "email": "lekhman24@mail.ru",
+      "password": "$2a$10$80lDxgtz1kVAhh7hJmeIcO77yuZ3LQchIK7UIeWks6bL3DKI5HixK",
+      "id": 10
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Владимир",
+      "location": "Россия, Нижний Новгород"
+    },
+    {
+      "name": "Максим",
+      "location": "Россия, Валдай",
+      "id": 2
+    },
+    {
+      "name": "Андрей",
+      "location": "Москва",
+      "id": 3
+    },
+    {
+      "name": "Андрей",
+      "location": "Москва",
+      "id": 4
+    },
+    {
+      "name": "Ахмед",
+      "location": "Росссия, Дагестан",
+      "id": 5
+    },
+    {
+      "name": "Илья",
+      "location": "Россия, Иркутск",
+      "id": 6
+    },
+    {
+      "name": "Vladimir",
+      "location": "dsddsds",
+      "id": 7
+    },
+    {
+      "name": "Никита",
+      "location": "Абакан",
+      "id": 10
+    },
+    {
+      "name": "zcc",
+      "location": "czzc",
+      "id": 11
+    }
+  ]
+}

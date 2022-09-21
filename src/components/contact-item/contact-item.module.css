@@ -1,0 +1,9 @@
+.buttonWrapper {
+  display: flex;
+  height: 100%;
+  align-self: center;
+}
+
+.buttonWrapper button {
+  margin-left: 10px;
+}
