@@ -9,8 +9,12 @@ import { useEffect } from "react";
 import { AppRoutes, AuthStatus } from "../../../consts/consts";
 import { logoutAction } from "../../../store/actions/api-actions";
 import { useState } from "react";
-import { getContacts } from "../../../store/reducers/selector";
+import {
+  getContacts,
+  getContactsError,
+} from "../../../store/contacts-process/selector";
 import { ContactType } from "../../../types/types";
+import ErrorMessage from "../../error-message/error-message";
 
 function ContactsPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -19,6 +23,7 @@ function ContactsPage(): JSX.Element {
   const [search, setSearch] = useState("");
   const contacts = useAppSelector(getContacts);
   const [showContacts, setShowContacts] = useState<ContactType[]>([]);
+  const error = useAppSelector(getContactsError);
 
   const clickLogoutButtonHandle = () => {
     dispatch(logoutAction());
@@ -32,36 +37,39 @@ function ContactsPage(): JSX.Element {
 
   useEffect(() => {
     const searchContacts = contacts.filter((contact) =>
-      contact.name.includes(search)
+      contact.name.toLowerCase().includes(search.toLowerCase())
     );
 
     setShowContacts(searchContacts);
   }, [search, contacts]);
 
   return (
-    <section className={style.contact}>
-      <div className={style.wrapperContent}>
-        <TextField
-          type="search"
-          id="search"
-          label="Поиск..."
-          variant="outlined"
-          fullWidth
-          value={search}
-          onChange={(evt) => setSearch(evt.target.value)}
-        />
-        <ContactList contacts={showContacts} />
-        <CreateContactForm />
-      </div>
-      <Button
-        className={style.logout}
-        variant="contained"
-        color="error"
-        onClick={clickLogoutButtonHandle}
-      >
-        Выйти
-      </Button>
-    </section>
+    <>
+      <section className={style.contact}>
+        <div className={style.wrapperContent}>
+          <TextField
+            type="search"
+            id="search"
+            label="Поиск..."
+            variant="outlined"
+            fullWidth
+            value={search}
+            onChange={(evt) => setSearch(evt.target.value)}
+          />
+          <ContactList contacts={showContacts} />
+          <CreateContactForm />
+        </div>
+        <Button
+          className={style.logout}
+          variant="contained"
+          color="error"
+          onClick={clickLogoutButtonHandle}
+        >
+          Выйти
+        </Button>
+      </section>
+      {error && <ErrorMessage error={error} />}
+    </>
   );
 }
 

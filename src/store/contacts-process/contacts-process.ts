@@ -17,7 +17,11 @@ export const contactsProcess = createSlice({
     setContactsError: (state, action) => {
       state.error = action.payload;
     },
+    resetContactsError: (state) => {
+      state.error = "";
+    },
   },
 });
 
-export const { setContacts, setContactsError } = contactsProcess.actions;
+export const { setContacts, setContactsError, resetContactsError } =
+  contactsProcess.actions;

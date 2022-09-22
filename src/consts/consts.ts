@@ -43,3 +43,16 @@ export enum ServerError {
   Message = "Server error!",
 }
 
+export const ErrorMessagesSignUp = new Map([
+  ["Password Not Match", "Пароли не совпадают!"],
+  [
+    "Bad Request",
+    "Введены некорректные данные и/или такой пользователь уже существует!",
+  ],
+]);
+
+export const ErrorMessagesSignIn = new Map([
+  ["Bad Request", "Введены некорректные данные!"],
+]);
+
+export const TIMEOUT_RESET_MESSAGE = 5000;

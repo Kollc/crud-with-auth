@@ -1,16 +1,19 @@
 import { TextField, Button } from "@mui/material";
 import { useState } from "react";
-import { useAppDispatch } from "../../hooks/hooks";
+import { ErrorMessagesSignIn } from "../../consts/consts";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { signInAction } from "../../store/actions/api-actions";
+import { getUserError } from "../../store/user-process/selector";
 import style from "./sign-in-form.module.css";
 
 function SignInForm(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAppDispatch();
+  const error = useAppSelector(getUserError);
 
   const clickSignInButtonHandle = () => {
-    dispatch(signInAction({email, password}));
+    dispatch(signInAction({ email, password }));
   };
 
   return (
@@ -30,7 +33,12 @@ function SignInForm(): JSX.Element {
         value={password}
         onChange={(evt) => setPassword(evt.target.value)}
       />
-      <Button variant="contained" onClick={clickSignInButtonHandle}>
+      <span className={style.error}>{ErrorMessagesSignIn.get(error)}</span>
+      <Button
+        variant="contained"
+        onClick={clickSignInButtonHandle}
+        style={{ marginTop: error ? "10px" : "40px" }}
+      >
         Войти
       </Button>
     </form>

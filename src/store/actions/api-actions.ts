@@ -9,14 +9,21 @@ import {
 } from "./../../types/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { ApiEndpoint, APIRoute, AuthStatus } from "../../consts/consts";
 import {
+  ApiEndpoint,
+  APIRoute,
+  AuthStatus,
+  TIMEOUT_RESET_MESSAGE,
+} from "../../consts/consts";
+import {
+  resetUserError,
   setAuthStatus,
   setUserEmail,
   setUserError,
 } from "../user-process/user-process";
 import { saveUserId } from "../../services/user-id";
 import {
+  resetContactsError,
   setContacts,
   setContactsError,
 } from "../contacts-process/contacts-process";
@@ -44,6 +51,7 @@ export const signUpAction = createAsyncThunk<
 
       dispatch(setAuthStatus(AuthStatus.Auth));
       dispatch(setUserEmail(data.user.email));
+      dispatch(resetUserError());
     } catch (error) {
       dispatch(setUserError(errorHandler(error)));
     }
@@ -72,6 +80,7 @@ export const signInAction = createAsyncThunk<
 
       dispatch(setAuthStatus(AuthStatus.Auth));
       dispatch(setUserEmail(data.user.email));
+      dispatch(resetUserError());
     } catch (error) {
       dispatch(setUserError(errorHandler(error)));
     }
@@ -99,9 +108,7 @@ export const checkAuthAction = createAsyncThunk<
       dispatch(setUserEmail(data.email));
       dispatch(setAuthStatus(AuthStatus.Auth));
     }
-  } catch (error) {
-    dispatch(setUserError(errorHandler(error)));
-  }
+  } catch (error) {}
 });
 
 export const fetchContactAction = createAsyncThunk<
@@ -113,12 +120,14 @@ export const fetchContactAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >("contacts/fetchContact", async (_args, { dispatch, extra: api }) => {
-  console.log("fetch");
   try {
     const { data } = await api.get(`${APIRoute.Contacts}?_sort=id&_order=desc`); // Чтобы сверху отображались последние добавленные контакты
     dispatch(setContacts(data));
   } catch (error) {
     dispatch(setContactsError(errorHandler(error)));
+    setTimeout(() => {
+      dispatch(resetContactsError());
+    }, TIMEOUT_RESET_MESSAGE);
   }
 });
 
@@ -144,6 +153,9 @@ export const createContactAction = createAsyncThunk<
       }
     } catch (error) {
       dispatch(setContactsError(errorHandler(error)));
+      setTimeout(() => {
+        dispatch(resetContactsError());
+      }, TIMEOUT_RESET_MESSAGE);
     }
   }
 );
@@ -202,6 +214,9 @@ export const updateContactAction = createAsyncThunk<
       }
     } catch (error) {
       dispatch(setContactsError(errorHandler(error)));
+      setTimeout(() => {
+        dispatch(resetContactsError());
+      }, TIMEOUT_RESET_MESSAGE);
     }
   }
 );

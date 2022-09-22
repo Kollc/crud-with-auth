@@ -1,7 +1,10 @@
 import { TextField, Button } from "@mui/material";
 import { useState } from "react";
-import { useAppDispatch } from "../../hooks/hooks";
+import { ErrorMessagesSignUp } from "../../consts/consts";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { signUpAction } from "../../store/actions/api-actions";
+import { getUserError } from "../../store/user-process/selector";
+import { setUserError } from "../../store/user-process/user-process";
 import style from "./sign-up-fom.module.css";
 
 function SignUpForm(): JSX.Element {
@@ -9,13 +12,13 @@ function SignUpForm(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confimPassword, setConfimPassword] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
+  const error = useAppSelector(getUserError);
 
   const clickSignInButtonHandle = () => {
     if (password === confimPassword) {
       dispatch(signUpAction({ email, password }));
     } else {
-      console.log("Пароли должны совпадать");
+      dispatch(setUserError("Password Not Match"));
     }
   };
 
@@ -44,7 +47,12 @@ function SignUpForm(): JSX.Element {
         value={confimPassword}
         onChange={(evt) => setConfimPassword(evt.target.value)}
       />
-      <Button variant="contained" onClick={clickSignInButtonHandle}>
+      <span className={style.error}>{ErrorMessagesSignUp.get(error)}</span>
+      <Button
+        variant="contained"
+        onClick={clickSignInButtonHandle}
+        style={{ marginTop: error ? "10px" : "40px" }}
+      >
         Зарегестрироваться
       </Button>
     </form>

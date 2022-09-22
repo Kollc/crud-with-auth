@@ -21,7 +21,11 @@ export const userProcess = createSlice({
     setUserError: (state, action) => {
       state.error = action.payload;
     },
+    resetUserError: (state) => {
+      state.error = "";
+    },
   },
 });
 
-export const { setUserEmail, setAuthStatus, setUserError } = userProcess.actions;
+export const { setUserEmail, setAuthStatus, setUserError, resetUserError } =
+  userProcess.actions;
