@@ -33,7 +33,7 @@ function SignUpForm(): JSX.Element {
       />
       <TextField
         type="password"
-        label="Password"
+        label="Пароль"
         id="password"
         margin="dense"
         value={password}

@@ -11,8 +11,8 @@ export enum APIRoute {
 }
 
 export enum SignTabs {
-  SignIn = "Sign In",
-  SignUp = "Sign Up",
+  SignIn = "Войти",
+  SignUp = "Зарегестрироваться",
 }
 
 export enum ApiEndpoint {

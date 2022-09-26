@@ -29,6 +29,11 @@
       "email": "mr.kollc4@list.ru",
       "password": "$2a$10$wszg8LQCHtzUrSBohgawMunVD6fs9CqoxeqhFcJOQKHQiVX4OlZNe",
       "id": 9
+    },
+    {
+      "email": "lekhman24@mail.ru",
+      "password": "$2a$10$xlk4GNS.dU38alZ2m4o/0ew0EmM/k28eV.DRg1lpMGkHirxCWfapa",
+      "id": 10
     }
   ],
   "contacts": [
