@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 import { AppRoutes, AuthStatus } from "../../consts/consts";
 import { useAppSelector } from "../../hooks/hooks";
 import { getAuthStatus } from "../../store/user-process/selector";
-import Spinner from "../spinner/spinner";
 
 type PrivateRouteProps = {
   children: JSX.Element;
@@ -13,8 +12,6 @@ function PrivateRoute({ children }: PrivateRouteProps): JSX.Element {
 
   return authStatus === AuthStatus.Auth ? (
     children
-  ) : authStatus === AuthStatus.Unknown ? (
-    <Spinner />
   ) : (
     <Navigate to={AppRoutes.Main} />
   );
