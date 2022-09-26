@@ -6,7 +6,7 @@
 
 ### `json-server info.json -m ./../node_modules/json-server-auth --port 3004`
 
-Сервер запустится на [http://localhost:3004](http://localhost:3004).\
+Сервер запустится на [http://localhost:3004](http://localhost:3004).
 
 ## Запуск клиентской части
 
@@ -14,4 +14,4 @@
 
 ### `npm start`
 
-В браузере перейти на [http://localhost:3000](http://localhost:3000).\
+В браузере перейти на [http://localhost:3000](http://localhost:3000).
