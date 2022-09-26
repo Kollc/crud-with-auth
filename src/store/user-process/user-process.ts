@@ -4,7 +4,7 @@ import { UserProcessType } from "../../types/types";
 
 const initialState: UserProcessType = {
   email: "",
-  authStatus: AuthStatus.Unknow,
+  authStatus: AuthStatus.Unknown,
   error: "",
 };
 

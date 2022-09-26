@@ -31,7 +31,7 @@ export const USER_ID_KEY_NAME = "USER_ID";
 
 export enum AuthStatus {
   Auth = "AUTH",
-  Unknow = "UNKNOW",
+  Unknown = "UNKNOWN",
   NoAuth = "NO AUTH",
 }
 
